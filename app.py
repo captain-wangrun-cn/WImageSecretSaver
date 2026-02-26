@@ -215,6 +215,14 @@ async def random_image():
             if not os.path.exists(file_path):
                 return jsonify({"error": "文件不存在"}), 404
 
+            if meta_only:
+                rel_full = os.path.join(row["filepath"], row["filename"])
+                return jsonify({
+                    "filename": row["filename"],
+                    "filepath": row["filepath"],
+                    "fullpath": rel_full.replace("\\", "/")
+                }), 200
+
             encrypted_data = await asyncio.to_thread(open(file_path, "rb").read)
 
             try:
