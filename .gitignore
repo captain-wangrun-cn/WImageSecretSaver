@@ -2,3 +2,4 @@ __pycache__/*
 images/*
 test_image.png
 downloaded_image.png
+.vscode/settings.json
